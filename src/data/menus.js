@@ -10,8 +10,8 @@ export const menuMain = [
         highlighted: false,
     },
     {
-        name: "About Us",
-        url: "/about-us",
+        name: "Videos",
+        url: "/videos",
         highlighted: false,
     },
     {
