@@ -12,8 +12,8 @@ export const phone = {
 };
 
 export const email = {
-    href: "mailto:info@astropie.com",
-    label: "info@astropie.com",
+    href: "mailto:matjenp@mail.de",
+    label: "matjenp@mail.de",
 };
 
 export const address = {

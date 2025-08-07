@@ -1,8 +1,8 @@
 ---
-
+const { class: className = "" } = Astro.props;
 ---
 
-<div class="mx-auto max-w-4xl text-center prose mb-20 space-y-1">
+<div class={`mx-auto max-w-4xl text-center prose mb-20 space-y-1 ${className}`}>
     <Fragment>
         <slot name="heading-title" />
     </Fragment>
