@@ -1,11 +1,11 @@
 ---
-// src/components/YouTubeVideosSSG.astro
 import { Icon } from "astro-icon/components";
+import "~/styles/global.css";
 import { Image } from "astro:assets";
 
 // Your YouTube Channel ID
-const CHANNEL_ID = "UClWCQNaggkMW7SDtS3BkEBg"; // Replace with your channel ID
-const MAX_VIDEOS = 6; // Number of videos to display
+const CHANNEL_ID = "UCDpPQ_XZ_bVrc9BQRR8kLJg"; // Replace channel ID
+const MAX_VIDEOS = 40; // Number of videos to display
 
 // Fetch YouTube RSS feed at build time
 let videos = [];
@@ -52,7 +52,7 @@ try {
 ---
 
 <section class="py-8">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="w-full">
         {
             error ? (
                 <div class="text-center py-8">
@@ -62,31 +62,27 @@ try {
                 </div>
             ) : videos.length === 0 ? (
                 <div class="text-center py-8">
-                    <p class="text-gray-600 dark:text-gray-400">
-                        No videos found.
-                    </p>
+                    <p class="text-gray-600">No videos found.</p>
                 </div>
             ) : (
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {videos.map((video) => (
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 dark:border-gray-700">
-                            <div class="relative">
+                        <div class="bg-brand-secondary/20 rounded-lg hover:shadow-lg transition-all duration-400 transform hover:-translate-y-1 flex flex-col ">
+                            <div class="relative w-full aspect-video">
                                 <iframe
                                     src={`https://www.youtube.com/embed/${video.id}`}
                                     title={video.title}
-                                    width="100%"
-                                    height="180"
-                                    class="w-full h-48 object-cover rounded-t-lg"
+                                    class="absolute top-0 left-0 w-full h-full rounded-t-lg"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen
                                     loading="lazy"
                                 />
                             </div>
-                            <div class="p-4">
-                                <h3 class="!text-2xl text-gray-900 dark:text-white line-clamp-2 mb-2">
+                            <div class="p-4 flex-1 flex flex-col">
+                                <h3 class="!text-2xl text-brand-black line-clamp-2 mb-2">
                                     {video.title}
                                 </h3>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <p class="text-sm text-gray-500 mt-auto">
                                     {video.published.toLocaleDateString(
                                         "de-DE",
                                         {
@@ -108,10 +104,10 @@ try {
                 href={`https://www.youtube.com/channel/${CHANNEL_ID}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-300"
+                class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-brand-white rounded-lg transition-colors duration-300 font-bold"
             >
                 <Icon name="mdi:youtube" class="w-5 h-5 mr-2" />
-                View All Videos
+                Subscribe
             </a>
         </div>
     </div>
