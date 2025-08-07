@@ -6,6 +6,7 @@
     --color-brand-primary: #ff0000;
     --color-brand-secondary: #db9999;
     --color-brand-accent: #d35f5f;
+    --color-brand-black: #000000;
 }
 
 @utility container {

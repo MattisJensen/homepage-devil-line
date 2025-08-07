@@ -1,32 +1,31 @@
 ---
-import { menuMain } from "~/data/menus";
 const currentYear = new Date().getFullYear();
+import { Picture } from "astro:assets";
 import { siteName } from "~/data/config";
+
+// Images
+import LogoText from "~/assets/images/logo-text.png";
 ---
 
-<footer class="bg-brand-primary text-white">
-    <div class="container pt-16 pb-8">
-        <p class="text-center font-bold text-4xl text-white">
-            Astro<span class="text-brand-secondary bg-white px-3 ml-1 rounded-lg"
-                >Pie</span>
-        </p>
-        <nav
-            class="flex flex-col sm:flex-row items-center justify-center gap-x-12 gap-y-3 font-medium mt-6"
-            aria-label="Footer"
-        >
-            {
-                menuMain.map((item) => (
-                    <a href={item.url} class="hover:underline">
-                        {item.name}
-                    </a>
-                ))
-            }
-        </nav>
-        <p class="mt-10 text-center text-sm">
+<footer class="bg-brand-black text-white">
+    <div class="container pt-8 pb-10">
+     
+        <a href="/" class="-m-1.5 p-1.5">
+            <Picture
+                class:list={"mx-auto"}
+                src={LogoText}
+                height={50}
+                formats={["avif", "webp"]}
+                alt="Devil-Line Windsurfing Logo"
+            />
+        </a>
+
+        <p class="text-center text-sm">
             &copy; {currentYear}
             {siteName}. All rights reserved. <a
                 class="underline"
-                href="/privacy-policy">Privacy policy</a>
+                href="/privacy-policy">Privacy policy</a
+            >
         </p>
     </div>
 </footer>

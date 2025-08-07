@@ -1,9 +1,9 @@
 // Global variables
 export const siteLang = "en-US";
-export const siteCurrency = "USD";
-export const siteDomain = "astropie.com";
-export const siteName = "AstroPie";
-export const siteSlogan = "The best pies in the galaxy!";
+export const siteCurrency = "EUR";
+export const siteDomain = "devil-line.com";
+export const siteName = "Devil-Line Windsurfing";
+export const siteSlogan = "Work Less - Surf More!";
 export const themeColor = "#FF0000";
 
 export const phone = {
@@ -26,7 +26,7 @@ export const address = {
 
 export const socialMedia = {
     facebook: {
-        url: "https://facebook.com",
+        url: "https://www.facebook.com/Teamdevilline",
         label: "Facebook",
         icon: "facebook",
     },
@@ -36,12 +36,12 @@ export const socialMedia = {
         icon: "twitter",
     },
     instagram: {
-        url: "https://instagram.com",
+        url: "https://www.instagram.com/teamdevilline/",
         label: "Instagram",
         icon: "instagram",
     },
     youtube: {
-        url: "https://youtube.com",
+        url: "https://www.youtube.com/@Devil-line",
         label: "YouTube",
         icon: "youtube",
     },
