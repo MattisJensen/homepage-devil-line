@@ -9,7 +9,8 @@ import Heading from "~/components/Heading.astro";
 import WideImage from "~/components/WideImage.astro";
 
 // Images
-import HomeHeader from "~/assets/images/home-header.jpeg";
+import Tandem from "~/assets/images/tandem.jpeg";
+import FjordOpening from "~/assets/images/fjord-opening.jpg";
 import TeamJan from "~/assets/images/team/jan.avif";
 import TeamPeer from "~/assets/images/team/peer.avif";
 import TeamMattis from "~/assets/images/team/mattis.avif";
@@ -23,7 +24,7 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
 >
     <!-- Top -->
     <WideImage
-        image={HomeHeader}
+        image={FjordOpening}
         alt="Two surfers riding together on a tandem windsurf board, enjoying the waves"
         class:list={"aspect-video lg:aspect-[16/7]"}
     />
@@ -38,11 +39,12 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                 <h1 class="font-black mb-10">Devil-Line Windsurfing</h1>
 
                 <p>
-                    Your home for wind and water. Whether you’re a seasoned pro
-                    or just starting out, we bring windsurfers together for
-                    unforgettable sessions, events and good times on and off the
-                    water. Discover training, competitions and a crew that
-                    shares your passion for the sport.
+                    Dein Zuhause für Wind und Wasser. Egal, ob du ein erfahrener
+                    Profi bist oder gerade erst anfängst - wir bringen
+                    Windsurfer zusammen für unvergessliche Sessions, Events und
+                    gute Zeiten auf und neben dem Wasser. Entdecke Trainings,
+                    Wettbewerbe und eine Crew, die deine Leidenschaft für den
+                    Sport teilt.
                 </p>
                 <div class="mb-16"></div>
 
@@ -51,7 +53,7 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
             <div slot="hero-content-right">
                 <Picture
                     class:list={"mx-auto"}
-                    src={HomeHeader}
+                    src={Tandem}
                     height={600}
                     formats={["avif", "webp"]}
                     alt="A description of my image."
@@ -68,16 +70,17 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
             <!-- Intro -->
             <Heading>
                 <h2 slot="heading-title" class="font-black !mb-4">
-                    Meet the Passionate Crew
+                    Lerne die leidenschaftliche Crew kennen
                 </h2>
                 <p slot="heading-content" class="!mt-0">
-                    Devil-Line Windsurfing is a team of dedicated windsurfers,
-                    creatives and event organizers united by one mission: to
-                    grow the sport and make it more accessible to everyone. From
-                    training sessions and tournaments to championships and
-                    relaxed BBQ evenings, we create events that bring the
-                    windsurfing community together and celebrate the joy of
-                    riding the wind.
+                    Devil-Line Windsurfing ist ein Team aus engagierten
+                    Windsurfern, Kreativen und Eventorganisatoren mit einer
+                    gemeinsamen Mission: den Sport weiterzuentwickeln und für
+                    alle zugänglich zu machen. Von Trainingseinheiten und
+                    Turnieren bis hin zu Meisterschaften und entspannten
+                    BBQ-Abenden - wir organisieren Events, die die
+                    Windsurf-Community zusammenbringen und die Freude an Wind
+                    und Wasser feiern.
                 </p>
             </Heading>
 
@@ -91,11 +94,11 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                             formats={["avif", "webp"]}
                             alt="A description of my image."
                         />
-                        <h3 class="mt-0 font-black !text-2xl">Founder</h3>
+                        <h3 class="mt-0 font-black !text-2xl">Gründer</h3>
                         <p class="!text-base">
                             <strong>Jan </strong>
-                            leads with vision and energy, inspiring the whole crew
-                            and bringing windsurfers together on and off the water.
+                            führt mit Vision und Energie, inspiriert das gesamte
+                            Team und bringt Windsurfer auf und neben dem Wasser zusammen.
                         </p>
                     </div>
                 </div>
@@ -109,12 +112,12 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                             alt="A description of my image."
                         />
                         <h3 class="mt-0 font-black !text-2xl">
-                            Co-Founder and<br />Head of Social Media
+                            Mitgründer und Leiter Social Media
                         </h3>
                         <p class="">
                             <strong>Peer </strong>
-                            connects our community, shares our story and keeps everyone
-                            up to date with the latest events.
+                            verbindet unsere Community, erzählt unsere Geschichte
+                            und hält alle über die neuesten Events auf dem Laufenden.
                         </p>
                     </div>
                 </div>
@@ -128,12 +131,12 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                             alt="A description of my image."
                         />
                         <h3 class="mt-0 font-black !text-2xl">
-                            Media Designer and Software Engineer
+                            Medien Designer und Software Ingenieur
                         </h3>
                         <p class="">
                             <strong> Mattis </strong>
-                            is the creative mind behind our visuals and the architect
-                            of our digital world.
+                            ist der kreative Kopf hinter unseren Visuals und der
+                            Architekt unserer digitalen Welt.
                         </p>
                     </div>
                 </div>
@@ -147,13 +150,12 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                             alt="A description of my image."
                         />
                         <h3 class="mt-0 font-black !text-2xl">
-                            Photo and Video Specialist
+                            Foto- und Videospezialistin
                         </h3>
                         <p class="">
                             <strong>Knipsi </strong>
-                            <!-- <br /><span class="mt-1 block"></span> -->
-                            captures our excitement and spirit, making every moment
-                            unforgettable through her lens.
+                            fängt unsere Begeisterung und den Spirit ein – mit ihrer
+                            Kamera macht sie jeden Moment unvergesslich.
                         </p>
                     </div>
                 </div>
@@ -171,7 +173,7 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                 d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
             ></path>
         </svg>
-        <svg
+        <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
             class="absolute h-40 w-full bottom-0 inset-x-0"
@@ -181,8 +183,8 @@ import TeamKnipsi from "~/assets/images/team/knipsi.avif";
                 fill-opacity="1"
                 d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
             ></path>
-        </svg>
+        </svg> -->
     </Section>
 
-    <Section />
+    <!-- <Section /> -->
 </Layout>
