@@ -14,9 +14,9 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
     <div class="container py-6">
         <nav class="flex items-center justify-between" aria-label="Global">
             <a href="/" class="-m-1.5 p-1.5">
-                <p class="font-bold text-4xl text-brand-green">
+                <p class="font-bold text-4xl text-brand-primary">
                     Astro<span
-                        class="text-brand-red bg-brand-red/5 px-3 ml-1 rounded-lg"
+                        class="text-brand-secondary bg-brand-secondary/5 px-3 ml-1 rounded-lg"
                         >Pie</span>
                 </p>
             </a>
@@ -28,7 +28,7 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
                 >
                     <span class="sr-only">Open main menu</span>
                     <svg
-                        class="size-8 text-brand-green"
+                        class="size-8 text-brand-primary"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
@@ -49,7 +49,7 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
                     menuMain.map((item) => (
                         <a
                             href={item.url}
-                            class={`transition text-base/6 font-semibold hover:text-brand-green ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
+                            class={`transition text-base/6 font-semibold hover:text-brand-primary ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
                         >
                             {item.name}
                         </a>
@@ -77,13 +77,13 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
             >
                 <div class="flex items-center justify-between">
                     <a href="/" class="-m-1.5 p-1.5">
-                        <p class="font-bold text-4xl text-brand-green">
-                            Astro<span class="text-brand-red">Pie</span>
+                        <p class="font-bold text-4xl text-brand-primary">
+                            Astro<span class="text-brand-secondary">Pie</span>
                         </p>
                     </a>
                     <button
                         type="button"
-                        class="-m-2.5 p-2.5 text-brand-red"
+                        class="-m-2.5 p-2.5 text-brand-secondary"
                         @click="open = false"
                     >
                         <span class="sr-only">Close menu</span>

@@ -112,7 +112,7 @@ A component for displaying articles.
 A component for displaying badges.
 
 ```astro
-<Badge color="green" title="New" />
+<Badge color="primary" title="New" />
 ```
 
 ### Button
@@ -120,7 +120,7 @@ A component for displaying badges.
 A component for displaying buttons.
 
 ```astro
-<Button color="green" url="/contact">Contact Us</Button>
+<Button color="primary" url="/contact">Contact Us</Button>
 ```
 
 ### ButtonCallUs

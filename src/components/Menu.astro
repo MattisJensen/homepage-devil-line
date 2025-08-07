@@ -7,7 +7,7 @@ const siteLangFormat = siteLang.replace("_", "-");
 
 <!-- Quick Nav -->
 <div id="plate-nav-wrapper" class="mb-20 sticky top-8 z-10">
-    <nav class="bg-brand-green text-white sm:rounded-full max-w-5xl mx-auto">
+    <nav class="bg-brand-primary text-white sm:rounded-full max-w-5xl mx-auto">
         <div class="swiper-plates w-auto overflow-hidden">
             <ul id="plate-nav" class="px-2.5 py-3 swiper-wrapper">
                 {
@@ -37,7 +37,7 @@ const siteLangFormat = siteLang.replace("_", "-");
                 data-category-section={plate.data.slug}
             >
                 <div class="flex flex-col items-center gap-2 max-w-lg mx-auto text-balance text-center">
-                    <h3 class="h4 text-brand-green/70">
+                    <h3 class="h4 text-brand-primary/70">
                         {plate.data.prettyName}
                     </h3>
                     <p>{plate.data.description}</p>
@@ -123,7 +123,7 @@ const siteLangFormat = siteLang.replace("_", "-");
         function setActiveCategory(id: string) {
             // Remove active classes and restore hover effect to all links
             categoryLinks.forEach((link) => {
-                link.classList.remove("bg-white", "text-brand-green");
+                link.classList.remove("bg-white", "text-brand-primary");
                 link.classList.add("hover:bg-white/10");
             });
 
@@ -132,7 +132,7 @@ const siteLangFormat = siteLang.replace("_", "-");
                 `[data-category-link="${id}"]`
             );
             if (currentLink) {
-                currentLink.classList.add("bg-white", "text-brand-green");
+                currentLink.classList.add("bg-white", "text-brand-primary");
                 currentLink.classList.remove("hover:bg-white/10");
                 activeLink = currentLink;
 
