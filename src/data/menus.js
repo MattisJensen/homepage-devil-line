@@ -5,8 +5,13 @@ export const menuMain = [
         highlighted: false,
     },
     {
-        name: "Menu",
-        url: "/menu",
+        name: "Events",
+        url: "/events",
+        highlighted: false,
+    },
+    {
+        name: "Spots",
+        url: "/spots",
         highlighted: false,
     },
     {
@@ -15,19 +20,9 @@ export const menuMain = [
         highlighted: false,
     },
     {
-        name: "Gallery",
-        url: "/gallery",
-        highlighted: false,
-    },
-    {
         name: "Contact",
         url: "/contact",
         highlighted: false,
-    },
-    {
-        name: "Book",
-        url: "/book",
-        highlighted: true,
     },
 ];
 
