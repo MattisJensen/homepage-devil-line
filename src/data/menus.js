@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL || "/";
+
 export const menuMain = [
     {
         name: "Home",
@@ -6,22 +8,22 @@ export const menuMain = [
     },
     {
         name: "Events",
-        url: "/events",
+        url: `${base}/events`,
         highlighted: false,
     },
     {
         name: "Spots",
-        url: "/spots",
+        url: `${base}/spots`,
         highlighted: false,
     },
     {
         name: "Videos",
-        url: "/videos",
+        url: `${base}/videos`,
         highlighted: false,
     },
     {
         name: "Kontakt",
-        url: "/contact",
+        url: `${base}/contact`,
         highlighted: false,
     },
 ];
