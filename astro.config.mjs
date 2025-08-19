@@ -8,7 +8,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://mattisjensen.github.io/homepage-devil-line",
+    site: "https://mattisjensen.github.io",
     // base: "/",
     // trailingSlash: 'always',
     integrations: [
