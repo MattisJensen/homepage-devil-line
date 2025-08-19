@@ -3,7 +3,7 @@ const base = import.meta.env.BASE_URL || "/";
 export const menuMain = [
     {
         name: "Home",
-        url: "/",
+        url: `${base}/`,
         highlighted: false,
     },
     {
@@ -27,6 +27,8 @@ export const menuMain = [
         highlighted: false,
     },
 ];
+
+export const home = `${base}/`;
 
 export const footerPrimary = [
     {

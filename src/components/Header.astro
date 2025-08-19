@@ -1,6 +1,6 @@
 ---
 import { Picture, Image } from "astro:assets";
-import { menuMain } from "~/data/menus.js";
+import { menuMain, home } from "~/data/menus.js";
 
 const rmTrailingSlash = (path: string): string => {
     return path.endsWith("/") && path.length > 1
@@ -17,7 +17,7 @@ import LogoText from "~/assets/images/logo-text.png";
 <header x-data="{ open: false }" @keydown.window.escape="open = false">
     <div class="container py-6">
         <nav class="flex items-center justify-between" aria-label="Global">
-            <a href="/" class="-m-1.5 p-1.5 mr-6">
+            <a href={home} class="-m-1.5 p-1.5 mr-6">
                 <Picture
                     class:list={"mx-auto"}
                     src={LogoText}
@@ -82,7 +82,7 @@ import LogoText from "~/assets/images/logo-text.png";
                 x-cloak
             >
                 <div class="flex items-center justify-between">
-                    <a href="/" class="-m-1.5 p-1.5 mr-6">
+                    <a href={home} class="-m-1.5 p-1.5 mr-6">
                         <Picture
                             class:list={"mx-auto"}
                             src={LogoText}
