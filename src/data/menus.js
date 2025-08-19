@@ -20,7 +20,7 @@ export const menuMain = [
         highlighted: false,
     },
     {
-        name: "Contact",
+        name: "Kontakt",
         url: "/contact",
         highlighted: false,
     },

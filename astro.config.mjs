@@ -8,8 +8,8 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://astropie.netlify.app",
-    base: "/",
+    site: "https:/MattisJensen.github.io",
+    base: "/homepage-devil-line",
     // trailingSlash: 'always',
     integrations: [
         alpinejs(),

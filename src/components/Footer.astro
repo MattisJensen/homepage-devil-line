@@ -2,14 +2,21 @@
 const currentYear = new Date().getFullYear();
 import { Picture } from "astro:assets";
 import { siteName } from "~/data/config";
+import WideImage from "./WideImage.astro";
 
 // Images
 import LogoText from "~/assets/images/logo-text.png";
+import Devil from "~/assets/images/footer.avif";
 ---
 
 <footer class="bg-brand-black text-white">
+    <WideImage
+        image={Devil}
+        alt="Footer Devil"
+        class:list={"aspect-videolg:aspect-[16/7]"}
+    />
+    
     <div class="container pt-8 pb-10">
-     
         <a href="/" class="-m-1.5 p-1.5">
             <Picture
                 class:list={"mx-auto"}
