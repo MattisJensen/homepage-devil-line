@@ -3,27 +3,27 @@ const base = import.meta.env.BASE_URL || "/";
 export const menuMain = [
     {
         name: "Home",
-        url: `${base}/`,
+        url: `/`,
         highlighted: false,
     },
     {
         name: "Events",
-        url: `${base}/events`,
+        url: `/events`,
         highlighted: false,
     },
     {
         name: "Spots",
-        url: `${base}/spots`,
+        url: `/spots`,
         highlighted: false,
     },
     {
         name: "Videos",
-        url: `${base}/videos`,
+        url: `/videos`,
         highlighted: false,
     },
     {
         name: "Kontakt",
-        url: `${base}/contact`,
+        url: `/contact`,
         highlighted: false,
     },
 ];
