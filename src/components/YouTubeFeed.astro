@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import "~/styles/global.css";
-import { Image } from "astro:assets";
 
 // Your YouTube Channel ID
 const CHANNEL_ID = "UCDpPQ_XZ_bVrc9BQRR8kLJg"; // Replace channel ID
@@ -49,6 +48,31 @@ try {
     console.error("Error fetching YouTube videos:", err);
     error = err instanceof Error ? err.message : String(err);
 }
+
+// Array for manually added YouTube videos
+const manualVideos = [
+    {
+        id: "Odxan4VhoJQ",
+        title: "Foiling Championships in Groß Wittensee - NDR Bericht",
+        published: new Date("2023-09-30"),
+        thumbnail: "https://img.youtube.com/vi/Odxan4VhoJQ/maxresdefault.jpg",
+        url: "https://www.youtube.com/watch?v=Odxan4VhoJQ",
+    },
+];
+
+// Array for blacklisted YouTube video IDs
+const blacklistVideos = ["JRbOO_0Mosc", "rtZdHUEK-dQ"];
+
+// Remove blacklisted videos
+const filteredVideos = videos.filter(
+    (video) => !blacklistVideos.includes(video.id)
+);
+console.log("filteredVideos:", filteredVideos.length);
+// Combine manual videos and filtered fetched videos
+videos = [...manualVideos, ...filteredVideos].slice(
+    0,
+    MAX_VIDEOS + manualVideos.length
+);
 ---
 
 <section class="py-8">
