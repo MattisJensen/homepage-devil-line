@@ -2,15 +2,7 @@
 
 ## 🌊 About
 
-Devil-Line Windsurfing homepage is your go-to platform for all things windsurfing. Whether you're a seasoned pro or just starting out, we've got you covered with the latest news, gear reviews, and expert tips.
-
-## 🛠️ Technologies Used
-
--   **Astro**: The core framework for building fast, content-focused websites.
--   **TailwindCSS**: A utility-first CSS framework for rapid UI development.
--   **Alpine.js**: A lightweight JavaScript framework for adding interactivity.
--   **Swiper**: A modern slider library for creating responsive sliders.
--   **GLightbox**: A pure JavaScript lightbox for displaying images and videos.
+Source code of the Devil-Line Windsurfing homepage.
 
 ## 🚀 Installation and Deployment
 
