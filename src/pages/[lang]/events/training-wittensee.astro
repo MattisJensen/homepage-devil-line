@@ -5,6 +5,7 @@ import Hero from "~/components/Hero.astro";
 import Heading from "~/components/Heading.astro";
 import Button from "~/components/Button.astro";
 import WideImage from "~/components/WideImage.astro";
+import WaveDivider from "~/components/WaveDivider.astro";
 import { Picture } from "astro:assets";
 import { getStaticLangPaths, t, localizedPath, type Language } from "~/i18n";
 
@@ -69,7 +70,7 @@ const p = txt.trainingWittensee;
       <!-- Info Card -->
       <div
         slot="hero-content-right"
-        class="bg-brand-secondary/20 rounded-lg p-8 flex flex-col gap-6 max-w-xl mx-auto w-full"
+        class="bg-brand-surface border border-brand-muted/60 rounded-lg p-8 flex flex-col gap-6 max-w-xl mx-auto w-full"
       >
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1">
@@ -168,8 +169,10 @@ const p = txt.trainingWittensee;
     </div>
   </Section>
 
+  <WaveDivider fill="#ffffff" class="bg-brand-surface" />
+
   <!-- CTA Section -->
-  <Section class:list={"bg-brand-accent/20"}>
+  <Section class:list={"bg-brand-surface"}>
     <div class="max-w-2xl mx-auto text-center flex flex-col items-center gap-6">
       <h2 class="text-2xl font-black text-brand-black">{p.ctaHeading}</h2>
       <p class="text-gray-600">{p.ctaDescription}</p>

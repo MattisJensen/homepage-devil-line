@@ -7,6 +7,7 @@ import Badge from "~/components/Badge.astro";
 import Grid4 from "~/components/Grid4.astro";
 import Heading from "~/components/Heading.astro";
 import WideImage from "~/components/WideImage.astro";
+import WaveDivider from "~/components/WaveDivider.astro";
 import { getStaticLangPaths, t, type Language } from "~/i18n";
 
 // Images
@@ -31,25 +32,34 @@ const txt = t(lang);
   pageTitle={txt.home.pageTitle}
   description={txt.home.metaDescription}
 >
-  <!-- Top -->
-  <WideImage
-    image={FjordOpening}
-    alt={txt.home.heroImageAlt}
-    class:list={"aspect-video lg:aspect-[16/3.5]"}
-  />
+  <!-- Hero Banner -->
+  <div class="relative">
+    <WideImage
+      image={FjordOpening}
+      alt={txt.home.heroImageAlt}
+      class:list={"aspect-[4/3] sm:aspect-video lg:aspect-[16/5]"}
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-brand-black/20 to-transparent"
+    >
+    </div>
+    <div
+      class="absolute inset-x-0 bottom-0 container pb-8 sm:pb-12 lg:pb-16"
+    >
+      <Badge title={txt.home.badge} color="primary" />
+      <h1 class="text-white font-black max-w-3xl">{txt.home.heading}</h1>
+    </div>
+  </div>
 
   <!-- Intro -->
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
-        <h1 class="font-black mb-10">{txt.home.heading}</h1>
-        <p>{txt.home.intro}</p>
-        <div class="mb-16"></div>
-        <Badge title={txt.home.badge} />
+        <p class="text-lg lg:text-xl leading-relaxed">{txt.home.intro}</p>
       </div>
       <div slot="hero-content-right">
         <Picture
-          class:list={"mx-auto"}
+          class:list={"mx-auto rounded-lg"}
           src={Tandem}
           height={600}
           formats={["avif", "webp"]}
@@ -61,104 +71,87 @@ const txt = t(lang);
     </Hero>
   </Section>
 
+  <WaveDivider fill="#ffffff" class="bg-brand-surface" />
+
   <!-- Team -->
-  <Section class:list={"bg-brand-accent/20 relative"}>
-    <div class="py-16">
-      <Heading>
-        <h2 slot="heading-title" class="font-black !mb-4">
-          {txt.home.teamHeading}
-        </h2>
-        <p slot="heading-content" class="!mt-0">
-          {txt.home.teamDescription}
-        </p>
-      </Heading>
+  <Section class:list={"bg-brand-surface"}>
+    <Heading>
+      <h2 slot="heading-title" class="font-black !mb-4">
+        {txt.home.teamHeading}
+      </h2>
+      <p slot="heading-content" class="!mt-0">
+        {txt.home.teamDescription}
+      </p>
+    </Heading>
 
-      <Grid4>
-        <div slot="grid-content-1">
-          <div class="flex flex-col items-center prose text-center">
-            <Picture
-              class:list={"not-prose w-full h-auto"}
-              src={TeamJan}
-              formats={["avif", "webp"]}
-              alt="Jan"
-            />
-            <h3 class="mt-0 font-black !text-2xl">
-              {txt.home.team.jan.role}
-            </h3>
-            <p class="!text-base">
-              <strong>Jan </strong>
-              {txt.home.team.jan.description}
-            </p>
-          </div>
+    <Grid4>
+      <div slot="grid-content-1">
+        <div class="flex flex-col items-center text-center">
+          <Picture
+            class:list={"w-full h-auto rounded-lg mb-4"}
+            src={TeamJan}
+            formats={["avif", "webp"]}
+            alt="Jan"
+          />
+          <h3 class="text-lg font-black text-brand-black">
+            {txt.home.team.jan.role}
+          </h3>
+          <p class="text-sm text-brand-accent mt-1">
+            <strong>Jan</strong> — {txt.home.team.jan.description}
+          </p>
         </div>
+      </div>
 
-        <div slot="grid-content-2">
-          <div class="flex flex-col items-center prose text-center">
-            <Picture
-              class:list={"not-prose w-full h-auto"}
-              src={TeamPeer}
-              formats={["avif", "webp"]}
-              alt="Peer"
-            />
-            <h3 class="mt-0 font-black !text-2xl">
-              {txt.home.team.peer.role}
-            </h3>
-            <p>
-              <strong>Peer </strong>
-              {txt.home.team.peer.description}
-            </p>
-          </div>
+      <div slot="grid-content-2">
+        <div class="flex flex-col items-center text-center">
+          <Picture
+            class:list={"w-full h-auto rounded-lg mb-4"}
+            src={TeamPeer}
+            formats={["avif", "webp"]}
+            alt="Peer"
+          />
+          <h3 class="text-lg font-black text-brand-black">
+            {txt.home.team.peer.role}
+          </h3>
+          <p class="text-sm text-brand-accent mt-1">
+            <strong>Peer</strong> — {txt.home.team.peer.description}
+          </p>
         </div>
+      </div>
 
-        <div slot="grid-content-3">
-          <div class="flex flex-col items-center prose text-center">
-            <Picture
-              class:list={"not-prose w-full h-auto"}
-              src={TeamMattis}
-              formats={["avif", "webp"]}
-              alt="Mattis"
-            />
-            <h3 class="mt-0 font-black !text-2xl">
-              {txt.home.team.mattis.role}
-            </h3>
-            <p>
-              <strong>Mattis </strong>
-              {txt.home.team.mattis.description}
-            </p>
-          </div>
+      <div slot="grid-content-3">
+        <div class="flex flex-col items-center text-center">
+          <Picture
+            class:list={"w-full h-auto rounded-lg mb-4"}
+            src={TeamMattis}
+            formats={["avif", "webp"]}
+            alt="Mattis"
+          />
+          <h3 class="text-lg font-black text-brand-black">
+            {txt.home.team.mattis.role}
+          </h3>
+          <p class="text-sm text-brand-accent mt-1">
+            <strong>Mattis</strong> — {txt.home.team.mattis.description}
+          </p>
         </div>
+      </div>
 
-        <div slot="grid-content-4">
-          <div class="flex flex-col items-center prose text-center">
-            <Picture
-              class:list={"not-prose w-full h-auto"}
-              src={TeamKnipsi}
-              formats={["avif", "webp"]}
-              alt="Knipsi"
-            />
-            <h3 class="mt-0 font-black !text-2xl">
-              {txt.home.team.knipsi.role}
-            </h3>
-            <p>
-              <strong>Knipsi </strong>
-              {txt.home.team.knipsi.description}
-            </p>
-          </div>
+      <div slot="grid-content-4">
+        <div class="flex flex-col items-center text-center">
+          <Picture
+            class:list={"w-full h-auto rounded-lg mb-4"}
+            src={TeamKnipsi}
+            formats={["avif", "webp"]}
+            alt="Knipsi"
+          />
+          <h3 class="text-lg font-black text-brand-black">
+            {txt.home.team.knipsi.role}
+          </h3>
+          <p class="text-sm text-brand-accent mt-1">
+            <strong>Knipsi</strong> — {txt.home.team.knipsi.description}
+          </p>
         </div>
-      </Grid4>
-    </div>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1440 320"
-      class="absolute h-40 w-full top-0 inset-x-0 rotate-180"
-      preserveAspectRatio="none"
-    >
-      <path
-        fill="#ffffff"
-        fill-opacity="1"
-        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      ></path>
-    </svg>
+      </div>
+    </Grid4>
   </Section>
 </Layout>

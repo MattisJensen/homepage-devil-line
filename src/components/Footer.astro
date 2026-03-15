@@ -21,26 +21,32 @@ import Devil from "~/assets/images/footer.avif";
     <WideImage
         image={Devil}
         alt="Footer Devil"
-        class:list={"aspect-videolg:aspect-[16/7]"}
+        class:list={""}
     />
-    
-    <div class="container pt-8 pb-10">
-        <a href="/" class="-m-1.5 p-1.5">
-            <Picture
-                class:list={"mx-auto"}
-                src={LogoText}
-                height={50}
-                formats={["avif", "webp"]}
-                alt="Devil-Line Windsurfing Logo"
-            />
-        </a>
 
-        <p class="text-center text-sm">
-            &copy; {currentYear}
-            {siteName}. {txt.footer.allRightsReserved} <a
-                class="underline"
-                href="/privacy-policy">{txt.footer.privacyPolicy}</a
+    <div class="container py-12 lg:py-16">
+        <div class="flex flex-col items-center gap-6">
+            <a href={`/${lang}`} class="block">
+                <Picture
+                    class:list={"mx-auto"}
+                    src={LogoText}
+                    height={40}
+                    formats={["avif", "webp"]}
+                    alt="Devil-Line Windsurfing Logo"
+                />
+            </a>
+
+            <p class="text-center text-sm text-white/60">
+                &copy; {currentYear}
+                {siteName}. {txt.footer.allRightsReserved}
+            </p>
+
+            <a
+                class="text-sm text-white/40 hover:text-white transition-colors"
+                href="/privacy-policy"
             >
-        </p>
+                {txt.footer.privacyPolicy}
+            </a>
+        </div>
     </div>
 </footer>

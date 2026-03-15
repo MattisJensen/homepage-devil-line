@@ -99,7 +99,7 @@ videos = [...manualVideos, ...filteredVideos].slice(
             ) : (
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {videos.map((video) => (
-                        <div class="bg-brand-secondary/20 rounded-lg hover:shadow-lg transition-all duration-400 transform hover:-translate-y-1 flex flex-col ">
+                        <div class="bg-brand-surface border border-brand-muted/60 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col ">
                             <div class="relative w-full aspect-video">
                                 <iframe
                                     src={`https://www.youtube.com/embed/${video.id}`}
@@ -111,9 +111,9 @@ videos = [...manualVideos, ...filteredVideos].slice(
                                 />
                             </div>
                             <div class="p-4 flex-1 flex flex-col">
-                                <h3 class="!text-2xl text-brand-black line-clamp-2 mb-2">
+                                <h6 class="text-base font-bold text-brand-black line-clamp-2 mb-2">
                                     {video.title}
-                                </h3>
+                                </h6>
                                 <p class="text-sm text-gray-500 mt-auto">
                                     {video.published.toLocaleDateString(
                                         txt.locale,
@@ -136,7 +136,7 @@ videos = [...manualVideos, ...filteredVideos].slice(
                 href={`https://www.youtube.com/channel/${CHANNEL_ID}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-brand-white rounded-lg transition-colors duration-300 font-bold"
+                class="button button-primary"
             >
                 <Icon name="mdi:youtube" class="w-5 h-5 mr-2" />
                 {txt.subscribe}

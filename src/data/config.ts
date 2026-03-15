@@ -3,7 +3,7 @@ export const siteCurrency = "EUR";
 export const siteDomain = "devil-line.com";
 export const siteName = "Devil-Line Windsurfing";
 export const siteSlogan = "Work Less - Surf More!";
-export const themeColor = "#FF0000";
+export const themeColor = "#dc2626";
 
 export const phone = {
     href: "tel:+123456789",
