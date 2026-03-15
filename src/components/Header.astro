@@ -119,7 +119,7 @@ import LogoText from "~/assets/images/logo-text.png";
     </div>
 
     <!--
-        Mobile overlay — lives inside <header> but uses position:fixed.
+        Mobile overlay - lives inside <header> but uses position:fixed.
         This works correctly because <header> itself has no backdrop-filter,
         so it doesn't act as a fixed containing block.
     -->
@@ -142,7 +142,7 @@ import LogoText from "~/assets/images/logo-text.png";
             @click="open = false"
         ></div>
 
-        <!-- Side panel — 2/3 width, flex-col keeps lang switcher at bottom -->
+        <!-- Side panel - 2/3 width, flex-col keeps lang switcher at bottom -->
         <div
             x-show="open"
             x-transition:enter="transition ease-out duration-200"
@@ -177,7 +177,7 @@ import LogoText from "~/assets/images/logo-text.png";
                 </button>
             </div>
 
-            <!-- Nav links — flex-1 fills available space, scrollable for long menus -->
+            <!-- Nav links - flex-1 fills available space, scrollable for long menus -->
             <nav class="flex-1 overflow-y-auto px-3 pb-4 flex flex-col gap-1">
                 {
                     menuMain.map((item) => (
