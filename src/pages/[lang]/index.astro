@@ -43,9 +43,7 @@ const txt = t(lang);
       class="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-brand-black/20 to-transparent"
     >
     </div>
-    <div
-      class="absolute inset-x-0 bottom-0 container pb-8 sm:pb-12 lg:pb-16"
-    >
+    <div class="absolute inset-x-0 bottom-0 container pb-8 sm:pb-12 lg:pb-16">
       <Badge title={txt.home.badge} color="background" mobileSize="normal" />
       <h1 class="text-white font-black max-w-3xl">{txt.home.heading}</h1>
     </div>
@@ -71,7 +69,10 @@ const txt = t(lang);
     </Hero>
   </Section>
 
-  <WaveDivider fill="#ffffff" class="bg-brand-surface" />
+  <WaveDivider
+    topColor="#ffffff"
+    bottomColor="var(--color-brand-surface)"
+  />
 
   <!-- Team -->
   <Section class:list={"bg-brand-surface"}>
