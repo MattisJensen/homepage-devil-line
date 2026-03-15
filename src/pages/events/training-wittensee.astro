@@ -1,0 +1,224 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Hero from "~/components/Hero.astro";
+import Heading from "~/components/Heading.astro";
+import Badge from "~/components/Badge.astro";
+import Button from "~/components/Button.astro";
+import WideImage from "~/components/WideImage.astro";
+import { Picture } from "astro:assets";
+
+// Images
+import TrainingHero from "~/assets/images/training/training02.jpg";
+import Foil01 from "~/assets/images/training/foil01.jpg";
+import Foil02 from "~/assets/images/training/foil02.jpg";
+import Foil03 from "~/assets/images/training/foil03.jpg";
+import Foil04 from "~/assets/images/training/foil04.jpg";
+import Foil05 from "~/assets/images/training/foil05.jpg";
+import Training05 from "~/assets/images/training/training05.jpg";
+---
+
+<Layout
+  title="Foil- & Slalomtraining Wittensee"
+  pageTitle="Foil- & Slalomtraining Wittensee"
+  description="Hochklassiges Foil- und Slalom-Training am Wittensee für Windsurfer und Wingfoiler."
+>
+  <!-- Hero Image -->
+  <WideImage
+    image={Foil05}
+    alt="Windsurfer beim Foil- und Slalomtraining am Wittensee"
+    class:list={"aspect-video lg:aspect-[16/3.5]"}
+  />
+
+  <!-- Breadcrumb -->
+  <div class="container py-4">
+    <nav class="text-sm text-gray-500 flex items-center gap-2">
+      <a href="/events" class="hover:text-brand-primary transition">Events</a>
+      <span>/</span>
+      <span class="text-brand-black font-medium"
+        >Foil- & Slalomtraining Wittensee</span
+      >
+    </nav>
+  </div>
+
+  <!-- Intro -->
+  <Section class:list={"bg-white"}>
+    <Heading>
+      <h1 slot="heading-title" class="font-black">
+        Foil- &amp; Slalomtraining Wittensee
+      </h1>
+      <p slot="heading-content">
+        Hochklassiges Foil- / Slalom-Training mit Fokus auf die bestmögliche
+        Vorbereitung für nationale sowie internationale Events.
+      </p>
+    </Heading>
+
+    <Hero>
+      <div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
+        <h2 class="font-black mb-6">Über das Training</h2>
+        <p>
+          Wie bereits in den vergangenen Jahren wird es wieder ein hochklassiges <strong
+            >Foil- / Slalom-Training</strong
+          > mit Fokus auf die bestmögliche Vorbereitung für nationale sowie internationale
+          Events geben. Das Training wird auf die wichtigsten Punkte im Slalom ausgerichtet.
+          Daher werden hauptsächlich <strong>Starts sowie Halsen</strong> intensiv
+          trainiert.
+        </p>
+        <p>
+          Natürlich wird auch auf andere Punkte geschaut oder auf Punkte, die
+          die Teilnehmer genauer trainieren wollen.
+        </p>
+        <p>
+          Das Training richtet sich an alle, die wettkampforientiert fahren, die
+          es noch wollen oder einfach nur Spaß am Slalomfahren haben. Es gibt
+          keine Einschränkungen – jeder kann und darf am Training teilnehmen.
+        </p>
+        <blockquote>
+          Ein großer Dank gilt der <strong
+            >German Windsurfing Association (GWA)</strong
+          >, der Klassenvereinigung der Windsurfer sowie der
+          <strong>Deutschen Wing Foil Vereinigung (DWFV)</strong>, die unser
+          Projekt 2025 wieder tatkräftig unterstützen. Dank dieser Partnerschaft
+          können wir die Aufwandsentschädigung für Teilnehmende – trotz
+          allgemein gestiegener Kosten – weiterhin niedrig halten.
+        </blockquote>
+      </div>
+
+      <!-- Info Card -->
+      <div
+        slot="hero-content-right"
+        class="bg-brand-secondary/20 rounded-lg p-8 flex flex-col gap-6 max-w-xl mx-auto w-full"
+      >
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Veranstaltungsort
+          </p>
+          <p class="font-semibold text-brand-black">Wittensee</p>
+          <p class="text-sm text-gray-600">Schleswig-Holstein, Deutschland</p>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Organisatoren
+          </p>
+          <p class="font-semibold text-brand-black">
+            Devil-Line Windsurfing &amp; Windsurfing Club Wittensee-Rendsburg
+          </p>
+          <div>
+            <p
+              class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+            >
+              Für wen?
+            </p>
+            <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
+              <li>Windsurfer</li>
+              <li>Wingfoiler</li>
+              <li>Alle Niveaus willkommen</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Unterstützt von
+          </p>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>German Windsurfing Association (GWA)</li>
+            <li>Klassenvereinigung der Windsurfer</li>
+            <li>Deutsche Wing Foil Vereinigung (DWFV)</li>
+          </ul>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Schwerpunkte
+          </p>
+          <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
+            <li>Starts</li>
+            <li>Halsen</li>
+            <li>Individuelle Trainingspunkte</li>
+          </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-2">
+          <Button
+            url="https://www.windsurfing-club-wittensee-rendsburg.de/Leistungssport/Training/"
+            newtab={true}
+            color="primary"
+          >
+            Zur Anmeldung &amp; weiteren Infos →
+          </Button>
+        </div>
+      </div>
+    </Hero>
+  </Section>
+
+  <!-- Photo Gallery -->
+  <Section class:list={"bg-white"}>
+    <Heading>
+      <h2 slot="heading-title" class="font-black">Impressionen</h2>
+    </Heading>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+      <Picture
+        src={Foil01}
+        formats={["avif", "webp"]}
+        alt="Foiler beim Training am Wittensee"
+        class:list={"w-full h-64 object-cover rounded-lg"}
+      />
+      <Picture
+        src={Foil02}
+        formats={["avif", "webp"]}
+        alt="Foiler beim Training am Wittensee"
+        class:list={"w-full h-64 object-cover rounded-lg"}
+      />
+      <Picture
+        src={Foil03}
+        formats={["avif", "webp"]}
+        alt="Foiler beim Training am Wittensee"
+        class:list={"w-full h-64 object-cover rounded-lg"}
+      />
+      <Picture
+        src={Foil04}
+        formats={["avif", "webp"]}
+        alt="Foiler beim Training am Wittensee"
+        class:list={"w-full h-64 object-cover rounded-lg"}
+      />
+      <Picture
+        src={Training05}
+        formats={["avif", "webp"]}
+        alt="Windsurfer beim Slalomtraining am Wittensee"
+        class:list={"w-full h-64 object-cover rounded-lg"}
+      />
+      <Picture
+        src={TrainingHero}
+        formats={["avif", "webp"]}
+        alt="Foiler beim Training am Wittensee"
+        class:list={"w-full h-64 object-cover rounded-lg"}
+      />
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section class:list={"bg-brand-accent/20"}>
+    <div class="max-w-2xl mx-auto text-center flex flex-col items-center gap-6">
+      <h2 class="text-2xl font-black text-brand-black">Jetzt anmelden!</h2>
+      <p class="text-gray-600">
+        Alle weiteren Informationen, Termine und die Anmeldung findest du auf
+        der Website des Windsurfing Club Wittensee-Rendsburg.
+      </p>
+      <Button
+        url="https://www.windsurfing-club-wittensee-rendsburg.de/Leistungssport/Training/"
+        newtab={true}
+        color="primary"
+      >
+        Zur offiziellen Trainingsseite →
+      </Button>
+    </div>
+  </Section>
+</Layout>

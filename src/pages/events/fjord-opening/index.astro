@@ -1,0 +1,123 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Heading from "~/components/Heading.astro";
+import WideImage from "~/components/WideImage.astro";
+import { Picture } from "astro:assets";
+
+// Images
+import FjordOpeningImg from "~/assets/images/fjord-opening.jpeg";
+
+const years = [
+    {
+        year: "2022",
+        subtitle: "Mai 2022",
+        description:
+            "Nach zwei Jahren Covid-Pause endlich wieder zurück! Rennen, Equipment-Tests und Spaß für alle Niveaus.",
+        url: "/events/fjord-opening/2022",
+    },
+    {
+        year: "2020",
+        subtitle: "9.–10. Mai 2020",
+        description:
+            "Das Hauptrennen als WW-Blow Out – trotz Covid-Absage des großen Events haben wir das Classic Race möglich gemacht.",
+        url: "/events/fjord-opening/2020",
+    },
+];
+---
+
+<Layout
+    title="Bork Havn Fjord Opening"
+    pageTitle="Bork Havn Fjord Opening"
+    description="Das große Windsurfevent von Devil-Line Windsurfing am Ringkøbing Fjord in Dänemark – alle Jahrgänge im Überblick."
+>
+    <!-- Hero Image -->
+    <WideImage
+        image={FjordOpeningImg}
+        alt="Windsurfer auf dem Ringkøbing Fjord beim Bork Havn Fjord Opening"
+        class:list={"aspect-video lg:aspect-[16/3.5]"}
+    />
+
+    <!-- Breadcrumb -->
+    <div class="container py-4">
+        <nav class="text-sm text-gray-500 flex items-center gap-2">
+            <a href="/events" class="hover:text-brand-primary transition"
+                >Events</a
+            >
+            <span>/</span>
+            <span class="text-brand-black font-medium"
+                >Bork Havn Fjord Opening</span
+            >
+        </nav>
+    </div>
+
+    <!-- Intro -->
+    <Section class:list={"bg-white"}>
+        <Heading>
+            <h1 slot="heading-title" class="font-black">
+                Bork Havn Fjord Opening
+            </h1>
+            <p slot="heading-content">
+                Unser jährliches Highlight am Ringkøbing Fjord – Windsurfen,
+                Wettkämpfe und eine großartige Community, mitten in der
+                dänischen Natur.
+            </p>
+        </Heading>
+
+        <div class="prose max-w-3xl mx-auto mb-16">
+            <p>
+                Das <strong>Bork Havn Fjord Opening (BHFO)</strong> ist das große
+                Windsurfevent von Devil-Line Windsurfing in Zusammenarbeit mit
+                <strong>WestWind Bork Havn</strong> in Dänemark. An der
+                weitläufigen Bucht des Ringkøbing Fjords treffen sich Windsurfer
+                aller Niveaus für gemeinsame Rennen, Spaß auf dem Wasser und gute
+                Stimmung am Strand.
+            </p>
+            <p>
+                Ob Anfänger oder erfahrener Racer – jeder ist willkommen,
+                unabhängig von Ausrüstung und Leistungsstand. Ein Führerschein
+                oder eine Segelnummer ist nicht erforderlich. Sorgt lediglich für
+                eine <strong>Haftpflichtversicherung</strong> und persönliche
+                Sicherheitsausrüstung.
+            </p>
+        </div>
+
+        <!-- Year cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {
+                years.map((y) => (
+                    <a
+                        href={y.url}
+                        class="group flex flex-col bg-brand-secondary/10 rounded-lg p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    >
+                        <span class="text-5xl font-black text-brand-primary mb-4">
+                            {y.year}
+                        </span>
+                        <p class="text-sm font-medium text-brand-accent mb-2">
+                            {y.subtitle}
+                        </p>
+                        <p class="text-gray-600 text-sm leading-relaxed flex-1">
+                            {y.description}
+                        </p>
+                        <span class="mt-6 inline-flex items-center gap-1 text-brand-primary font-semibold text-sm">
+                            Zum Event
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="size-4 group-hover:translate-x-1 transition-transform"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                        </span>
+                    </a>
+                ))
+            }
+        </div>
+    </Section>
+</Layout>

@@ -2,12 +2,131 @@
 import Layout from "~/layouts/Layout.astro";
 import Section from "~/components/Section.astro";
 import Heading from "~/components/Heading.astro";
+
+// Images
+import FjordOpening from "~/assets/images/fjord-opening.jpeg";
+import Foil03 from "~/assets/images/training/foil03.jpg";
+import { Picture } from "astro:assets";
+
+const allEvents = [
+  {
+    title: "Foil- & Slalomtraining Wittensee",
+    subtitle: "Wittensee, Schleswig-Holstein · Deutschland",
+    description:
+      "Hochklassiges Foil- / Slalom-Training mit Fokus auf Wettkampfvorbereitung. Für Windsurfer und Wingfoiler – offen für alle Niveaus.",
+    url: "/events/training-wittensee",
+    badge: "Devil-Line x WCWR",
+    image: Foil03,
+    imageAlt: "Foiler auf dem Wittensee beim Training",
+    date: null,
+  },
+  {
+    title: "Bork Havn Fjord Opening 2022",
+    subtitle: "Mai 2022 · Dänemark",
+    description:
+      "Nach zwei Jahren Covid-Pause endlich wieder zurück! Rennen, Equipment-Tests und Spaß für alle Niveaus am Ringkøbing Fjord.",
+    url: "/events/fjord-opening/2022",
+    badge: "Devil-Line × West Wind Bork",
+    image: FjordOpening,
+    imageAlt: "Windsurfer auf dem Ringkøbing Fjord",
+    date: new Date("2022-04-01"),
+  },
+  {
+    title: "Bork Havn Fjord Opening 2020",
+    subtitle: "9.–10. Mai 2020 · Dänemark",
+    description:
+      "Das Classic Race beim WW-Blow Out – trotz Covid-Absage des großen Events haben wir das Hauptrennen möglich gemacht.",
+    url: "/events/fjord-opening/2020",
+    badge: "Devil-Line × West Wind Bork",
+    image: FjordOpening,
+    imageAlt: "Windsurfer auf dem Ringkøbing Fjord",
+    date: new Date("2020-05-09"),
+  },
+];
+
+// Undated events first, then sorted newest → oldest
+const events = allEvents.sort((a, b) => {
+  if (!a.date && !b.date) return 0;
+  if (!a.date) return -1;
+  if (!b.date) return 1;
+  return b.date.getTime() - a.date.getTime();
+});
 ---
 
-<Layout title="Events" pageTitle="Events">
-    <Section class="!py-0">
-        <Heading class="!mb-10">
-            <h2>Events</h2>
-        </Heading>
-    </Section>
+<Layout
+  title="Events"
+  pageTitle="Events"
+  description="Unsere Windsurfevents – Bork Havn Fjord Opening, Foil- & Slalomtraining und mehr."
+>
+  <Section class:list={"bg-white"}>
+    <Heading>
+      <h1 slot="heading-title" class="font-black">Events</h1>
+      <p slot="heading-content">
+        Von Wettkämpfen in Dänemark bis zum Trainingscamp am Wittensee – hier
+        findet ihr alle Veranstaltungen von Devil-Line Windsurfing.
+      </p>
+    </Heading>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {
+        events.map((event) => (
+          <a
+            href={event.url}
+            class="group flex flex-col bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+          >
+            {event.image && (
+              <div class="w-full aspect-video overflow-hidden">
+                <Picture
+                  src={event.image}
+                  alt={event.imageAlt}
+                  formats={["avif", "webp"]}
+                  class:list={
+                    "w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  }
+                />
+              </div>
+            )}
+            {!event.image && (
+              <div class="w-full aspect-video bg-brand-secondary/20 flex items-center justify-center">
+                <span class="text-brand-secondary text-6xl font-black select-none">
+                  DL
+                </span>
+              </div>
+            )}
+            <div class="p-8 flex flex-col gap-3 flex-1">
+              <span class="inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-brand-primary bg-brand-primary/5 text-brand-primary">
+                {event.badge}
+              </span>
+              <h2 class="text-xl font-black text-brand-black group-hover:text-brand-primary transition-colors">
+                {event.title}
+              </h2>
+              <p class="text-sm font-medium text-brand-accent">
+                {event.subtitle}
+              </p>
+              <p class="text-gray-600 text-sm leading-relaxed flex-1">
+                {event.description}
+              </p>
+              <span class="mt-4 inline-flex items-center gap-1 text-brand-primary font-semibold text-sm">
+                Mehr erfahren
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-4 group-hover:translate-x-1 transition-transform"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
 </Layout>
+<p slot="heading-content"></p>

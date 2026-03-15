@@ -1,0 +1,166 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Hero from "~/components/Hero.astro";
+import Heading from "~/components/Heading.astro";
+import Badge from "~/components/Badge.astro";
+import WideImage from "~/components/WideImage.astro";
+
+// Images
+import FjordOpeningImg from "~/assets/images/fjord-opening.jpeg";
+---
+
+<Layout
+  title="Bork Havn Fjord Opening 2022"
+  pageTitle="Bork Havn Fjord Opening 2022"
+  description="Auch dieses Jahr musste das Bork Havn Fjord Opening aufgrund von Covid-19 leider abgesagt werden. Aber wir planen bereits das nächste große Event!"
+>
+  <!-- Hero Image -->
+  <WideImage
+    image={FjordOpeningImg}
+    alt="Windsurfer auf dem Ringkøbing Fjord beim Bork Havn Fjord Opening"
+    class:list={"aspect-video lg:aspect-[16/3.5]"}
+  />
+
+  <!-- Breadcrumb -->
+  <div class="container py-4">
+    <nav class="text-sm text-gray-500 flex items-center gap-2">
+      <a href="/events" class="hover:text-brand-primary transition">Events</a>
+      <span>/</span>
+      <a
+        href="/events/fjord-opening"
+        class="hover:text-brand-primary transition">Bork Havn Fjord Opening</a
+      >
+      <span>/</span>
+      <span class="text-brand-black font-medium">2022</span>
+    </nav>
+  </div>
+
+  <!-- Main -->
+  <Section class:list={"bg-white"}>
+    <Heading>
+      <h1 slot="heading-title" class="font-black">Fjord Opening 2022</h1>
+      <p slot="heading-content">
+        Auch dieses Jahr musste das Bork Havn Fjord Opening aufgrund von
+        Covid-19 leider abgesagt werden. Aber wir planen bereits das nächste
+        große Event!
+      </p>
+    </Heading>
+
+     <Hero>
+      <div slot="hero-content-left" class="prose max-w-none max-lg:order-1 lg:self-start">
+        <h2 class="font-black mt-0 mb-6">Über das Training</h2>
+        <p>
+          Das Fjord Opening 2019 war großartig – und leider mussten das Fjord
+          Opening 2020 &amp; 2021 aufgrund von Covid-19 abgesagt werden. Aber
+          das hat uns nicht davon abgehalten, das nächste große Event für 2022
+          zu planen!
+        </p>
+        <p>
+          Devil-Line Windsurfing lädt euch in Zusammenarbeit mit WestWind Bork
+          herzlich zum <strong>Bork Havn Fjord Opening 2022</strong> ein!
+        </p>
+        <p>
+          Je nach Wetter- und Windbedingungen wird es eine Vielzahl
+          verschiedener Rennen geben. Wir versprechen einen abwechslungsreichen
+          und aufregenden Windsurf-Tag mit Spaß für alle!
+        </p>
+        <p>
+          Jeder ist willkommen – unabhängig von Ausrüstung und körperlichem
+          Niveau. Außerdem habt ihr die Möglichkeit, die
+          <strong>neueste Ausrüstung von verschiedenen Marken</strong>
+          zu testen!
+        </p>
+        <blockquote>
+          Als Alternative zum BHFO 2021 haben wir versucht, mehrere kleine
+          Trainingseinheiten anzubieten – danke an alle, die dabei waren!
+        </blockquote>
+      </div>
+
+      <!-- Details Card -->
+      <div
+        slot="hero-content-right"
+        class="bg-brand-secondary/20 rounded-lg p-8 flex flex-col gap-6 max-w-xl mx-auto w-full"
+      >
+        <h3 class="font-black text-xl text-brand-black !m-0">Details 2022</h3>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Wann
+          </p>
+          <p class="font-semibold text-brand-black">Mai 2022 (Datum folgt)</p>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Wo
+          </p>
+          <p class="font-semibold text-brand-black">WestWind Bork, Dänemark</p>
+          <p class="text-sm text-gray-600">Bryggen 10, 6893 Hemmet</p>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Organisatoren
+          </p>
+          <p class="font-semibold text-brand-black">
+            Devil-Line Windsurfing &amp; WestWind Bork Havn
+          </p>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Programm
+          </p>
+          <p class="text-sm text-gray-700">
+            Verschiedene Rennen je nach Wetter- und Windbedingungen
+          </p>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Equipment-Test
+          </p>
+          <p class="text-sm text-gray-700">
+            Neueste Ausrüstung von verschiedenen Marken zum Testen
+          </p>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Sicherheit
+          </p>
+          <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
+            <li>Zertifizierte Schwimmweste Pflicht</li>
+            <li>Foiler müssen einen Helm tragen</li>
+          </ul>
+        </div>
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1"
+          >
+            Unterkunft
+          </p>
+          <p class="font-semibold text-brand-black">Danland</p>
+          <a
+            href="https://www.danland.de/ferienparks/bork-havn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-brand-primary underline"
+          >
+            danland.de/ferienparks/bork-havn
+          </a>
+          <p class="text-xs text-gray-500 mt-1">
+            Limitiertes Sonderangebot für BHFO-Teilnehmer verfügbar
+          </p>
+        </div>
+      </div>
+    </Hero>
+  </Section>
+</Layout>
