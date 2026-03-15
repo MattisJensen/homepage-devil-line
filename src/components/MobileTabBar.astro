@@ -1,0 +1,87 @@
+---
+import { getMainMenu } from "~/data/menus";
+import { defaultLanguage, type Language } from "~/i18n";
+
+import homeRaw from "~/assets/icons/home.svg?raw";
+import eventsRaw from "~/assets/icons/events.svg?raw";
+import spotsRaw from "~/assets/icons/spots.svg?raw";
+import videosRaw from "~/assets/icons/videos.svg?raw";
+import contactRaw from "~/assets/icons/contact.svg?raw";
+
+interface Props {
+    lang?: Language;
+}
+
+const { lang = defaultLanguage } = Astro.props;
+const menuMain = getMainMenu(lang);
+
+const rmTrailingSlash = (path: string): string =>
+    path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
+
+const pathname = rmTrailingSlash(Astro.url.pathname);
+
+const processIcon = (raw: string): string => {
+    let svg = raw
+        .replace(/<\?xml[^?]*\?>/g, "")
+        .replace(/<!DOCTYPE[^>]*>/g, "")
+        .replace(/stroke="#000000"/g, 'stroke="currentColor"')
+        .replace(/stroke:black/g, "stroke:currentColor")
+        .trim();
+    // Strip hardcoded w/h from the <svg> opening tag; inject size class
+    svg = svg.replace(/<svg([^>]*)>/, (_, attrs: string) => {
+        const cleaned = attrs
+            .replace(/\s+width="[^"]*"/, "")
+            .replace(/\s+height="[^"]*"/, "");
+        return `<svg${cleaned} class="size-full">`;
+    });
+    return svg;
+};
+
+const icons: Record<string, string> = {
+    home: processIcon(homeRaw),
+    events: processIcon(eventsRaw),
+    spots: processIcon(spotsRaw),
+    videos: processIcon(videosRaw),
+    contact: processIcon(contactRaw),
+};
+
+const getIconKey = (url: string): string => {
+    if (url.endsWith("/events")) return "events";
+    if (url.endsWith("/spots")) return "spots";
+    if (url.endsWith("/videos")) return "videos";
+    if (url.endsWith("/contact")) return "contact";
+    return "home";
+};
+---
+
+<nav
+    class="lg:hidden fixed bottom-0 inset-x-0 z-50 border-t border-brand-muted bg-white/95 backdrop-blur-sm"
+    style="padding-bottom: env(safe-area-inset-bottom);"
+    aria-label="Mobile navigation"
+>
+    <ul class="grid grid-cols-5">
+        {
+            menuMain.map((item) => {
+                const active = pathname === item.url;
+                const iconKey = getIconKey(item.url);
+
+                return (
+                    <li>
+                        <a
+                            href={item.url}
+                            class={`flex h-16 flex-col items-center justify-center gap-1 text-[0.65rem] font-medium transition-colors ${active ? "text-brand-primary" : "text-brand-accent hover:text-brand-black"}`}
+                            aria-current={active ? "page" : undefined}
+                        >
+                            <span
+                                class="block size-5 shrink-0"
+                                aria-hidden="true"
+                                set:html={icons[iconKey]}
+                            />
+                            <span class="leading-none">{item.name}</span>
+                        </a>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</nav>

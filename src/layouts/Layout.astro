@@ -2,6 +2,7 @@
 import "~/styles/global.css";
 import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
+import MobileTabBar from "~/components/MobileTabBar.astro";
 import { themeColor, siteName } from "~/data/config";
 import { defaultLanguage, type Language } from "~/i18n";
 
@@ -68,10 +69,13 @@ const baseUrl = `${Astro.url.protocol}//${Astro.url.host}`;
         <title>{pageTitle}</title>
     </head>
     <body>
-        <Header lang={lang} />
-        <main>
+        <div class="hidden lg:block">
+            <Header lang={lang} />
+        </div>
+        <main class="pb-20 lg:pb-0">
             <slot />
         </main>
         <Footer lang={lang} />
+        <MobileTabBar lang={lang} />
     </body>
 </html>
