@@ -322,6 +322,22 @@ const de = {
     noVideos: "Keine Videos gefunden.",
     subscribe: "Abonnieren",
   },
+
+  // -- More --
+  more: {
+    pageTitle: "Mehr",
+    metaDescription:
+      "Seiten und Einstellungen bei Devil-Line Windsurfing.",
+    heading: "Mehr",
+    subtitle: "Seiten und Einstellungen",
+    pagesLabel: "Seiten",
+    languageLabel: "Sprache",
+    contactLabel: "Kontakt",
+    languageOptions: {
+      de: "Deutsch",
+      en: "Englisch",
+    },
+  },
 };
 
 export type Translations = typeof de;

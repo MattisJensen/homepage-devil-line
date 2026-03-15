@@ -1,0 +1,105 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Heading from "~/components/Heading.astro";
+import {
+  getStaticLangPaths,
+  languages,
+  switchLanguagePath,
+  t,
+  type Language,
+} from "~/i18n";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const lang = Astro.params.lang as Language;
+const txt = t(lang);
+const moreTxt = txt.more;
+---
+
+<Layout
+  lang={lang}
+  title={moreTxt.pageTitle}
+  pageTitle={moreTxt.pageTitle}
+  description={moreTxt.metaDescription}
+>
+  <Section class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-brand-surface to-transparent"
+      aria-hidden="true"
+    >
+    </div>
+
+    <Heading class="!mb-10 !space-y-0 relative">
+      <h1 slot="heading-title" class="font-black">{moreTxt.heading}</h1>
+      <p slot="heading-content" class="!mt-0">{moreTxt.subtitle}</p>
+    </Heading>
+
+    <div class="mx-auto grid w-full max-w-3xl gap-4 md:gap-5 relative">
+      <section
+        class="rounded-xl border border-brand-muted bg-brand-surface/80 p-4 shadow-lg shadow-brand-black/5"
+      >
+        <h3
+          class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand-accent"
+        >
+          {moreTxt.pagesLabel}
+        </h3>
+        <a
+          href={`/${lang}/contact`}
+          class="group flex items-center justify-between rounded-xl border border-brand-muted bg-brand-white px-4 py-3 transition-colors hover:bg-brand-surface"
+        >
+          <span class="flex items-center gap-3">
+            <span class="text-sm font-semibold text-brand-black"
+                >{moreTxt.contactLabel}</span
+            >
+          </span>
+          <svg
+            class="size-4 text-brand-accent transition-transform group-hover:translate-x-0.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 6l6 6-6 6"></path>
+          </svg>
+        </a>
+      </section>
+
+      <section
+        class="rounded-xl border border-brand-muted bg-brand-surface/80 p-4 shadow-lg shadow-brand-black/5"
+      >
+        <div class="mb-4 flex items-center gap-3">
+          <h3
+            class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-accent"
+          >
+            {moreTxt.languageLabel}
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {
+            languages.map((l) => (
+              <a
+                href={switchLanguagePath(Astro.url.pathname, l)}
+                class={`inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${
+                  l === lang
+                    ? "bg-brand-primary text-white"
+                    : "bg-brand-white text-brand-accent ring-1 ring-brand-muted hover:bg-brand-muted/60 hover:text-brand-black"
+                }`}
+                aria-label={moreTxt.languageOptions[l]}
+              >
+                {moreTxt.languageOptions[l]}
+              </a>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </Section>
+</Layout>

@@ -6,7 +6,7 @@ import homeRaw from "~/assets/icons/home.svg?raw";
 import eventsRaw from "~/assets/icons/events.svg?raw";
 import spotsRaw from "~/assets/icons/spots.svg?raw";
 import videosRaw from "~/assets/icons/videos.svg?raw";
-import contactRaw from "~/assets/icons/contact.svg?raw";
+import moreRaw from "~/assets/icons/more.svg?raw";
 
 interface Props {
     lang?: Language;
@@ -14,6 +14,11 @@ interface Props {
 
 const { lang = defaultLanguage } = Astro.props;
 const menuMain = getMainMenu(lang);
+const mobileMenu = menuMain.map((item) =>
+    item.url.endsWith("/contact")
+        ? { ...item, name: "More", url: `/${lang}/more` }
+        : item,
+);
 
 const rmTrailingSlash = (path: string): string =>
     path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
@@ -42,14 +47,14 @@ const icons: Record<string, string> = {
     events: processIcon(eventsRaw),
     spots: processIcon(spotsRaw),
     videos: processIcon(videosRaw),
-    contact: processIcon(contactRaw),
+    more: processIcon(moreRaw),
 };
 
 const getIconKey = (url: string): string => {
+    if (url.endsWith("/more")) return "more";
     if (url.endsWith("/events")) return "events";
     if (url.endsWith("/spots")) return "spots";
     if (url.endsWith("/videos")) return "videos";
-    if (url.endsWith("/contact")) return "contact";
     return "home";
 };
 ---
@@ -61,7 +66,7 @@ const getIconKey = (url: string): string => {
 >
     <ul class="grid grid-cols-5">
         {
-            menuMain.map((item) => {
+            mobileMenu.map((item) => {
                 const active = pathname === item.url;
                 const iconKey = getIconKey(item.url);
 

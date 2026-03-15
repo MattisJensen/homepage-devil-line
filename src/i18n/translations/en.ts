@@ -322,6 +322,21 @@ const en: Translations = {
     noVideos: "No videos found.",
     subscribe: "Subscribe",
   },
+
+  // -- More --
+  more: {
+    pageTitle: "More",
+    metaDescription: "Pages and settings at Devil-Line Windsurfing.",
+    heading: "More",
+    subtitle: "Pages and settings",
+    pagesLabel: "Pages",
+    languageLabel: "Language",
+    contactLabel: "Contact",
+    languageOptions: {
+      de: "German",
+      en: "English",
+    },
+  },
 };
 
 export default en;
