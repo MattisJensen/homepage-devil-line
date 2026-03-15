@@ -1,0 +1,28 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Article from "~/components/Article.astro";
+import YouTubeFeed from "~/components/YouTubeFeed.astro";
+import { getStaticLangPaths, t, type Language } from "~/i18n";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const lang = Astro.params.lang as Language;
+const txt = t(lang);
+---
+
+<Layout
+  lang={lang}
+  title={txt.videos.pageTitle}
+  pageTitle={txt.videos.pageTitle}
+  description={txt.videos.metaDescription}
+>
+  <Section>
+    <Article>
+      <h2>{txt.videos.heading}</h2>
+    </Article>
+    <YouTubeFeed lang={lang} />
+  </Section>
+</Layout>

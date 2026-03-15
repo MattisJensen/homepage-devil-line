@@ -3,6 +3,14 @@ const currentYear = new Date().getFullYear();
 import { Picture } from "astro:assets";
 import { siteName } from "~/data/config";
 import WideImage from "./WideImage.astro";
+import { t, defaultLanguage, type Language } from "~/i18n";
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = defaultLanguage } = Astro.props;
+const txt = t(lang);
 
 // Images
 import LogoText from "~/assets/images/logo-text.png";
@@ -29,9 +37,9 @@ import Devil from "~/assets/images/footer.avif";
 
         <p class="text-center text-sm">
             &copy; {currentYear}
-            {siteName}. All rights reserved. <a
+            {siteName}. {txt.footer.allRightsReserved} <a
                 class="underline"
-                href="/privacy-policy">Privacy policy</a
+                href="/privacy-policy">{txt.footer.privacyPolicy}</a
             >
         </p>
     </div>

@@ -2,44 +2,49 @@
 import Layout from "~/layouts/Layout.astro";
 import Section from "~/components/Section.astro";
 import Heading from "~/components/Heading.astro";
+import { Picture } from "astro:assets";
+import { getStaticLangPaths, t, localizedPath, type Language } from "~/i18n";
 
 // Images
 import FjordOpening from "~/assets/images/fjord-opening.jpeg";
 import Foil03 from "~/assets/images/training/foil03.jpg";
-import { Picture } from "astro:assets";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const lang = Astro.params.lang as Language;
+const txt = t(lang);
 
 const allEvents = [
   {
-    title: "Foil- & Slalomtraining Wittensee",
-    subtitle: "Wittensee, Schleswig-Holstein · Deutschland",
-    description:
-      "Hochklassiges Foil- / Slalom-Training mit Fokus auf Wettkampfvorbereitung. Für Windsurfer und Wingfoiler – offen für alle Niveaus.",
-    url: "/events/training-wittensee",
-    badge: "Devil-Line x WCWR",
+    title: txt.events.training.title,
+    subtitle: txt.events.training.subtitle,
+    description: txt.events.training.description,
+    url: localizedPath(lang, "/events/training-wittensee"),
+    badge: txt.events.training.badge,
     image: Foil03,
-    imageAlt: "Foiler auf dem Wittensee beim Training",
+    imageAlt: txt.events.training.imageAlt,
     date: null,
   },
   {
-    title: "Bork Havn Fjord Opening 2022",
-    subtitle: "Mai 2022 · Dänemark",
-    description:
-      "Nach zwei Jahren Covid-Pause endlich wieder zurück! Rennen, Equipment-Tests und Spaß für alle Niveaus am Ringkøbing Fjord.",
-    url: "/events/fjord-opening/2022",
-    badge: "Devil-Line × West Wind Bork",
+    title: txt.events.fjordOpening2022.title,
+    subtitle: txt.events.fjordOpening2022.subtitle,
+    description: txt.events.fjordOpening2022.description,
+    url: localizedPath(lang, "/events/fjord-opening/2022"),
+    badge: txt.events.fjordOpening2022.badge,
     image: FjordOpening,
-    imageAlt: "Windsurfer auf dem Ringkøbing Fjord",
+    imageAlt: txt.events.fjordOpening2022.imageAlt,
     date: new Date("2022-04-01"),
   },
   {
-    title: "Bork Havn Fjord Opening 2020",
-    subtitle: "9.–10. Mai 2020 · Dänemark",
-    description:
-      "Das Classic Race beim WW-Blow Out – trotz Covid-Absage des großen Events haben wir das Hauptrennen möglich gemacht.",
-    url: "/events/fjord-opening/2020",
-    badge: "Devil-Line × West Wind Bork",
+    title: txt.events.fjordOpening2020.title,
+    subtitle: txt.events.fjordOpening2020.subtitle,
+    description: txt.events.fjordOpening2020.description,
+    url: localizedPath(lang, "/events/fjord-opening/2020"),
+    badge: txt.events.fjordOpening2020.badge,
     image: FjordOpening,
-    imageAlt: "Windsurfer auf dem Ringkøbing Fjord",
+    imageAlt: txt.events.fjordOpening2020.imageAlt,
     date: new Date("2020-05-09"),
   },
 ];
@@ -54,16 +59,16 @@ const events = allEvents.sort((a, b) => {
 ---
 
 <Layout
-  title="Events"
-  pageTitle="Events"
-  description="Unsere Windsurfevents – Bork Havn Fjord Opening, Foil- & Slalomtraining und mehr."
+  lang={lang}
+  title={txt.events.pageTitle}
+  pageTitle={txt.events.pageTitle}
+  description={txt.events.metaDescription}
 >
   <Section class:list={"bg-white"}>
     <Heading>
-      <h1 slot="heading-title" class="font-black">Events</h1>
+      <h1 slot="heading-title" class="font-black">{txt.events.heading}</h1>
       <p slot="heading-content">
-        Von Wettkämpfen in Dänemark bis zum Trainingscamp am Wittensee – hier
-        findet ihr alle Veranstaltungen von Devil-Line Windsurfing.
+        {txt.events.description}
       </p>
     </Heading>
 
@@ -107,7 +112,7 @@ const events = allEvents.sort((a, b) => {
                 {event.description}
               </p>
               <span class="mt-4 inline-flex items-center gap-1 text-brand-primary font-semibold text-sm">
-                Mehr erfahren
+                {txt.common.learnMore}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="size-4 group-hover:translate-x-1 transition-transform"
@@ -129,4 +134,3 @@ const events = allEvents.sort((a, b) => {
     </div>
   </Section>
 </Layout>
-<p slot="heading-content"></p>

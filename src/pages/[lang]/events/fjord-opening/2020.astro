@@ -1,0 +1,122 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Hero from "~/components/Hero.astro";
+import Heading from "~/components/Heading.astro";
+import WideImage from "~/components/WideImage.astro";
+import { getStaticLangPaths, t, localizedPath, type Language } from "~/i18n";
+
+// Images
+import FjordOpeningImg from "~/assets/images/fjord-opening.jpeg";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const lang = Astro.params.lang as Language;
+const txt = t(lang);
+const p = txt.fjordOpening2020;
+---
+
+<Layout
+  lang={lang}
+  title={p.pageTitle}
+  pageTitle={p.pageTitle}
+  description={p.metaDescription}
+>
+  <!-- Hero Image -->
+  <WideImage
+    image={FjordOpeningImg}
+    alt={p.heroImageAlt}
+    class:list={"aspect-video lg:aspect-[16/3.5]"}
+  />
+
+  <!-- Breadcrumb -->
+  <div class="container py-4">
+    <nav class="text-sm text-gray-500 flex items-center gap-2">
+      <a
+        href={localizedPath(lang, "/events")}
+        class="hover:text-brand-primary transition"
+      >
+        {txt.common.breadcrumbEvents}
+      </a>
+      <span>/</span>
+      <a
+        href={localizedPath(lang, "/events/fjord-opening")}
+        class="hover:text-brand-primary transition"
+      >
+        {txt.fjordOpening.breadcrumb}
+      </a>
+      <span>/</span>
+      <span class="text-brand-black font-medium">{p.breadcrumb}</span>
+    </nav>
+  </div>
+
+  <!-- Main -->
+  <Section class:list={"bg-white"}>
+    <Heading>
+      <h1 slot="heading-title" class="font-black">{p.heading}</h1>
+      <p slot="heading-content">{p.subtitle}</p>
+    </Heading>
+
+    <Hero>
+      <div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
+        <h2 class="font-black mb-6">{p.aboutHeading}</h2>
+        <div set:html={p.aboutContent} />
+      </div>
+
+      <!-- Details Card -->
+      <div
+        slot="hero-content-right"
+        class="bg-brand-secondary/20 rounded-lg p-8 flex flex-col gap-6 max-w-xl mx-auto w-full"
+      >
+        <h3 class="font-black text-xl text-brand-black !m-0">
+          {p.detailsHeading}
+        </h3>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1">
+            {p.details.whenLabel}
+          </p>
+          <p class="font-semibold text-brand-black">{p.details.when}</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1">
+            {p.details.whereLabel}
+          </p>
+          <p class="font-semibold text-brand-black">{p.details.where}</p>
+          <p class="text-sm text-gray-600">{p.details.whereAddress}</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1">
+            {p.details.organizersLabel}
+          </p>
+          <p class="font-semibold text-brand-black">{p.details.organizers}</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1">
+            {p.details.safetyLabel}
+          </p>
+          <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
+            {p.details.safety.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-1">
+            {p.details.accommodationLabel}
+          </p>
+          <p class="font-semibold text-brand-black">
+            {p.details.accommodation}
+          </p>
+          <a
+            href="https://www.danland.de/ferienparks/bork-havn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-brand-primary underline"
+          >
+            danland.de/ferienparks/bork-havn
+          </a>
+        </div>
+      </div>
+    </Hero>
+  </Section>
+</Layout>

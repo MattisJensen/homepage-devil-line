@@ -1,6 +1,14 @@
 ---
 import { Icon } from "astro-icon/components";
 import "~/styles/global.css";
+import { t, defaultLanguage, type Language } from "~/i18n";
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = defaultLanguage } = Astro.props;
+const txt = t(lang).videos;
 
 // Your YouTube Channel ID
 const CHANNEL_ID = "UCDpPQ_XZ_bVrc9BQRR8kLJg"; // Replace channel ID
@@ -67,7 +75,7 @@ const blacklistVideos = ["JRbOO_0Mosc", "rtZdHUEK-dQ"];
 const filteredVideos = videos.filter(
     (video) => !blacklistVideos.includes(video.id)
 );
-console.log("filteredVideos:", filteredVideos.length);
+
 // Combine manual videos and filtered fetched videos
 videos = [...manualVideos, ...filteredVideos].slice(
     0,
@@ -81,12 +89,12 @@ videos = [...manualVideos, ...filteredVideos].slice(
             error ? (
                 <div class="text-center py-8">
                     <p class="text-red-600 dark:text-red-400">
-                        Unable to load YouTube videos. Please try again later.
+                        {txt.errorMessage}
                     </p>
                 </div>
             ) : videos.length === 0 ? (
                 <div class="text-center py-8">
-                    <p class="text-gray-600">No videos found.</p>
+                    <p class="text-gray-600">{txt.noVideos}</p>
                 </div>
             ) : (
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -108,7 +116,7 @@ videos = [...manualVideos, ...filteredVideos].slice(
                                 </h3>
                                 <p class="text-sm text-gray-500 mt-auto">
                                     {video.published.toLocaleDateString(
-                                        "de-DE",
+                                        txt.locale,
                                         {
                                             year: "numeric",
                                             month: "short",
@@ -131,7 +139,7 @@ videos = [...manualVideos, ...filteredVideos].slice(
                 class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-brand-white rounded-lg transition-colors duration-300 font-bold"
             >
                 <Icon name="mdi:youtube" class="w-5 h-5 mr-2" />
-                Subscribe
+                {txt.subscribe}
             </a>
         </div>
     </div>

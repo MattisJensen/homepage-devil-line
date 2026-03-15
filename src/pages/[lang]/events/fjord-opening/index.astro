@@ -1,0 +1,109 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Heading from "~/components/Heading.astro";
+import WideImage from "~/components/WideImage.astro";
+import { getStaticLangPaths, t, localizedPath, type Language } from "~/i18n";
+
+// Images
+import FjordOpeningImg from "~/assets/images/fjord-opening.jpeg";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const lang = Astro.params.lang as Language;
+const txt = t(lang);
+const p = txt.fjordOpening;
+
+const years = [
+  {
+    year: "2022",
+    subtitle: p.years.y2022.subtitle,
+    description: p.years.y2022.description,
+    url: localizedPath(lang, "/events/fjord-opening/2022"),
+  },
+  {
+    year: "2020",
+    subtitle: p.years.y2020.subtitle,
+    description: p.years.y2020.description,
+    url: localizedPath(lang, "/events/fjord-opening/2020"),
+  },
+];
+---
+
+<Layout
+  lang={lang}
+  title={p.pageTitle}
+  pageTitle={p.pageTitle}
+  description={p.metaDescription}
+>
+  <!-- Hero Image -->
+  <WideImage
+    image={FjordOpeningImg}
+    alt={p.heroImageAlt}
+    class:list={"aspect-video lg:aspect-[16/3.5]"}
+  />
+
+  <!-- Breadcrumb -->
+  <div class="container py-4">
+    <nav class="text-sm text-gray-500 flex items-center gap-2">
+      <a
+        href={localizedPath(lang, "/events")}
+        class="hover:text-brand-primary transition"
+      >
+        {txt.common.breadcrumbEvents}
+      </a>
+      <span>/</span>
+      <span class="text-brand-black font-medium">{p.breadcrumb}</span>
+    </nav>
+  </div>
+
+  <!-- Intro -->
+  <Section class:list={"bg-white"}>
+    <Heading>
+      <h1 slot="heading-title" class="font-black">{p.heading}</h1>
+      <p slot="heading-content">{p.intro}</p>
+    </Heading>
+
+    <div class="prose max-w-3xl mx-auto mb-16" set:html={p.description} />
+
+    <!-- Year cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {
+        years.map((y) => (
+          <a
+            href={y.url}
+            class="group flex flex-col bg-brand-secondary/10 rounded-lg p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <span class="text-5xl font-black text-brand-primary mb-4">
+              {y.year}
+            </span>
+            <p class="text-sm font-medium text-brand-accent mb-2">
+              {y.subtitle}
+            </p>
+            <p class="text-gray-600 text-sm leading-relaxed flex-1">
+              {y.description}
+            </p>
+            <span class="mt-6 inline-flex items-center gap-1 text-brand-primary font-semibold text-sm">
+              {txt.common.goToEvent}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4 group-hover:translate-x-1 transition-transform"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+</Layout>

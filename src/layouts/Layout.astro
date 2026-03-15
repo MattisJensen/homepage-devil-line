@@ -3,13 +3,22 @@ import "~/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
-const { pageTitle, title, description } = Astro.props;
+import { themeColor, siteName } from "~/data/config";
+import { defaultLanguage, type Language } from "~/i18n";
+
+interface Props {
+  lang?: Language;
+  pageTitle: string;
+  title: string;
+  description?: string;
+}
+
+const { lang = defaultLanguage, pageTitle, title, description } = Astro.props;
 const baseUrl = `${Astro.url.protocol}//${Astro.url.host}`;
-import { siteLang, themeColor } from "~/data/config";
 ---
 
 <!doctype html>
-<html lang={siteLang}>
+<html lang={lang}>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,8 +58,8 @@ import { siteLang, themeColor } from "~/data/config";
         <meta property="og:title" content={title} />
         <meta property="og:image" content={`${baseUrl}/images/og-image.jpg`} />
         <meta property="og:description" content={description} />
-        <meta property="og:site_name" content="WP Infusion" />
-        <meta property="og:locale" content={siteLang} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:locale" content={lang} />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content={Astro.url} />
@@ -61,10 +70,10 @@ import { siteLang, themeColor } from "~/data/config";
         <ClientRouter />
     </head>
     <body>
-        <Header />
+        <Header lang={lang} />
         <main>
             <slot />
         </main>
-        <Footer />
+        <Footer lang={lang} />
     </body>
 </html>

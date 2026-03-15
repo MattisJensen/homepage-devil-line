@@ -1,11 +1,27 @@
 ---
-import { Picture, Image } from "astro:assets";
-import { menuMain, home } from "~/data/menus.js";
+import { Picture } from "astro:assets";
+import { getMainMenu, getHomePath } from "~/data/menus";
+import {
+  languages,
+  languageNames,
+  defaultLanguage,
+  switchLanguagePath,
+  type Language,
+} from "~/i18n";
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = defaultLanguage } = Astro.props;
+
+const menuMain = getMainMenu(lang);
+const home = getHomePath(lang);
 
 const rmTrailingSlash = (path: string): string => {
-    return path.endsWith("/") && path.length > 1
-        ? path.slice(0, path.length - 1)
-        : path;
+  return path.endsWith("/") && path.length > 1
+    ? path.slice(0, path.length - 1)
+    : path;
 };
 
 const pathname = rmTrailingSlash(Astro.url.pathname);
@@ -61,6 +77,25 @@ import LogoText from "~/assets/images/logo-text.png";
                         </a>
                     ))
                 }
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-2 ml-4 border-l border-gray-300 pl-6">
+                    {
+                        languages.map((l, i) => (
+                            <>
+                                {i > 0 && <span class="text-gray-300">|</span>}
+                                <a
+                                    href={switchLanguagePath(Astro.url.pathname, l)}
+                                    class={`text-sm font-semibold transition hover:text-brand-primary ${
+                                        l === lang ? "text-brand-primary" : "text-gray-500"
+                                    }`}
+                                    aria-label={languageNames[l]}
+                                >
+                                    {l.toUpperCase()}
+                                </a>
+                            </>
+                        ))
+                    }
+                </div>
             </div>
         </nav>
         <div
@@ -127,6 +162,26 @@ import LogoText from "~/assets/images/logo-text.png";
                                     </a>
                                 ))
                             }
+                            <!-- Mobile Language Switcher -->
+                            <div class="flex justify-center items-center gap-4 pt-8 mt-8 border-t border-gray-200">
+                                {
+                                    languages.map((l, i) => (
+                                        <>
+                                            {i > 0 && <span class="text-gray-300">|</span>}
+                                            <a
+                                                @click="open = false"
+                                                href={switchLanguagePath(Astro.url.pathname, l)}
+                                                class={`text-xl font-semibold transition ${
+                                                    l === lang ? "text-brand-primary" : "text-gray-500"
+                                                }`}
+                                                aria-label={languageNames[l]}
+                                            >
+                                                {l.toUpperCase()}
+                                            </a>
+                                        </>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

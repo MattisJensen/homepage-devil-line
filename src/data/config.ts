@@ -1,5 +1,4 @@
 // Global variables
-export const siteLang = "en-US";
 export const siteCurrency = "EUR";
 export const siteDomain = "devil-line.com";
 export const siteName = "Devil-Line Windsurfing";
