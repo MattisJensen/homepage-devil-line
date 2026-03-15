@@ -1,18 +1,25 @@
 ---
-const { color = "primary", title = "" }: BadgeProps = Astro.props;
+const { color = "primary", title = "", mobileSize = "normal" }: BadgeProps = Astro.props;
 
 interface BadgeProps {
-    color?: "secondary" | "primary";
-    title?: string;
+  color?: "secondary" | "primary";
+  title?: string;
+  mobileSize?: "small" | "normal";
 }
 
 const colors = {
-    secondary: "bg-brand-surface text-brand-accent",
-    primary: "bg-brand-primary/10 text-brand-primary",
+  secondary: "bg-brand-surface text-brand-accent",
+  primary: "bg-brand-primary/20 text-brand-primary",
+  background: "bg-brand-primary/20 text-brand-muted",
+};
+
+const mobileSizes = {
+  small: "px-2 py-0.5 text-[0.55rem] mb-2",
+  normal: "px-3 py-1 text-[0.65rem] mb-3",
 };
 ---
 
 <span
-    class={`inline-flex not-prose items-center mb-4 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider ${colors[color]}`}
-    >{title}</span
+  class={`inline-flex w-fit self-start not-prose items-center rounded-full sm:px-4 sm:py-1.5 sm:text-xs sm:mb-4 font-semibold uppercase tracking-wider ${colors[color]} ${mobileSizes[mobileSize]}`}
+  >{title}</span
 >

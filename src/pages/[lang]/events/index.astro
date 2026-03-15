@@ -4,6 +4,7 @@ import Section from "~/components/Section.astro";
 import Heading from "~/components/Heading.astro";
 import { Picture } from "astro:assets";
 import { getStaticLangPaths, t, localizedPath, type Language } from "~/i18n";
+import Badge from "~/components/Badge.astro";
 
 // Images
 import FjordOpening from "~/assets/images/fjord-opening.jpeg";
@@ -99,9 +100,7 @@ const events = allEvents.sort((a, b) => {
               </div>
             )}
             <div class="p-8 flex flex-col gap-3 flex-1">
-              <span class="inline-flex w-fit items-center rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wider bg-brand-primary/10 text-brand-primary">
-                {event.badge}
-              </span>
+              <Badge title={event.badge} color="primary" mobileSize="small" />
               <h2 class="text-xl font-black text-brand-black group-hover:text-brand-primary transition-colors">
                 {event.title}
               </h2>
