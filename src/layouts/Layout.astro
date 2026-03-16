@@ -69,9 +69,7 @@ const baseUrl = `${Astro.url.protocol}//${Astro.url.host}`;
         <title>{pageTitle}</title>
     </head>
     <body>
-        <div class="hidden lg:block">
-            <Header lang={lang} />
-        </div>
+        <Header lang={lang} />
         <main class="pb-0">
             <slot />
         </main>
