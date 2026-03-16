@@ -18,6 +18,7 @@ const en: Translations = {
   footer: {
     allRightsReserved: "All rights reserved.",
     privacyPolicy: "Privacy Policy",
+    languageSwitcherLabel: "Switch language",
   },
 
   // -- Common UI --

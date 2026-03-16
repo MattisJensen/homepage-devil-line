@@ -16,6 +16,7 @@ const de = {
   footer: {
     allRightsReserved: "Alle Rechte vorbehalten.",
     privacyPolicy: "Datenschutz",
+    languageSwitcherLabel: "Sprache wechseln",
   },
 
   // -- Common UI --

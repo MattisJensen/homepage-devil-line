@@ -2,8 +2,16 @@
 const currentYear = new Date().getFullYear();
 import { Picture } from "astro:assets";
 import { siteName } from "~/data/config";
+import Section from "./Section.astro";
 import WideImage from "./WideImage.astro";
-import { t, defaultLanguage, type Language } from "~/i18n";
+import {
+  t,
+  languages,
+  languageNames,
+  switchLanguagePath,
+  defaultLanguage,
+  type Language,
+} from "~/i18n";
 
 interface Props {
   lang?: Language;
@@ -11,6 +19,7 @@ interface Props {
 
 const { lang = defaultLanguage } = Astro.props;
 const txt = t(lang);
+const currentPath = Astro.url.pathname;
 
 // Images
 import LogoText from "~/assets/images/logo-text.png";
@@ -18,35 +27,63 @@ import Devil from "~/assets/images/footer.avif";
 ---
 
 <footer class="bg-brand-black text-white">
-    <WideImage
-        image={Devil}
-        alt="Footer Devil"
-        class:list={""}
-    />
+  <WideImage
+    image={Devil}
+    alt="Footer Devil"
+    class:list={""}
+    class="hidden lg:block"
+  />
 
-    <div class="container py-12 lg:py-16">
-        <div class="flex flex-col items-center gap-6">
-            <a href={`/${lang}`} class="block">
-                <Picture
-                    class:list={"mx-auto"}
-                    src={LogoText}
-                    height={40}
-                    formats={["avif", "webp"]}
-                    alt="Devil-Line Windsurfing Logo"
-                />
-            </a>
+  <div class="container py-12 lg:py-16">
+    <div class="flex flex-col items-center gap-3">
+      <a href={`/${lang}`} class="block">
+        <Picture
+          class:list={"mx-auto"}
+          src={LogoText}
+          height={40}
+          formats={["avif", "webp"]}
+          alt="Devil-Line Windsurfing Logo"
+        />
+      </a>
+      <p class="text-center
+          text-sm
+          text-white
+          60">
+        &copy; {currentYear}
+        {siteName}. {txt.footer.allRightsReserved}
+      </p>
 
-            <p class="text-center text-sm text-white/60">
-                &copy; {currentYear}
-                {siteName}. {txt.footer.allRightsReserved}
-            </p>
+      <a
+        class="text-sm text-white/40 hover:text-white transition-colors"
+        href="/privacy-policy"
+      >
+        {txt.footer.privacyPolicy}
+      </a>
 
-            <a
-                class="text-sm text-white/40 hover:text-white transition-colors"
-                href="/privacy-policy"
-            >
-                {txt.footer.privacyPolicy}
-            </a>
+      <div
+        class="lg:hidden w-full max-w-xs mt-6"
+        aria-label={txt.footer.languageSwitcherLabel}
+      >
+        <div class="grid grid-cols-2 gap-2">
+          {
+            languages.map((l) => (
+              <a
+                href={switchLanguagePath(currentPath, l)}
+                class={`inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
+                  l === lang
+                    ? "bg-brand-primary text-white"
+                    : "bg-brand-black text-white/70 ring-1 ring-white/20 hover:text-white hover:bg-brand-accent"
+                }`}
+                aria-label={languageNames[l]}
+              >
+                {languageNames[l]}
+              </a>
+            ))
+          }
         </div>
+      </div>
     </div>
+  </div>
+
+  <Section class="block lg:hidden" />
 </footer>
