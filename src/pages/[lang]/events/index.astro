@@ -100,7 +100,12 @@ const events = allEvents.sort((a, b) => {
               </div>
             )}
             <div class="p-8 flex flex-col gap-3 flex-1">
-              <Badge title={event.badge} color="primary" mobileSize="small" />
+              <Badge
+                title={event.badge}
+                color="primary"
+                mobileSize="small"
+                class="hidden lg:block"
+              />
               <h2 class="text-xl font-black text-brand-black group-hover:text-brand-primary transition-colors">
                 {event.title}
               </h2>

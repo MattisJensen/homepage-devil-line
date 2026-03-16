@@ -1,10 +1,11 @@
 ---
-const { color = "primary", title = "", mobileSize = "normal" }: BadgeProps = Astro.props;
+const { color = "primary", title = "", mobileSize = "normal", class: customClass = "inline-flex" }: BadgeProps = Astro.props;
 
 interface BadgeProps {
   color?: "secondary" | "primary";
   title?: string;
   mobileSize?: "small" | "normal";
+  class?: string;
 }
 
 const colors = {
@@ -20,6 +21,11 @@ const mobileSizes = {
 ---
 
 <span
-  class={`inline-flex w-fit self-start not-prose items-center rounded-full sm:px-4 sm:py-1.5 sm:text-xs sm:mb-4 font-semibold uppercase tracking-wider ${colors[color]} ${mobileSizes[mobileSize]}`}
+  class:list={[
+    "w-fit self-start not-prose items-center rounded-full sm:px-4 sm:py-1.5 sm:text-xs sm:mb-4 font-semibold uppercase tracking-wider",
+    colors[color],
+    mobileSizes[mobileSize],
+    customClass,
+  ]}
   >{title}</span
 >
