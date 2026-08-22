@@ -1,0 +1,31 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Article from "~/components/Article.astro";
+import { getEntry, render } from "astro:content";
+import { getStaticLangPaths, type Language } from "~/i18n";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const lang = Astro.params.lang as Language;
+
+const entry = await getEntry("impressum", lang);
+if (!entry) return Astro.redirect(`/${lang}`);
+
+const { Content } = await render(entry);
+---
+
+<Layout
+  lang={lang}
+  title={entry.data.title}
+  pageTitle={entry.data.title}
+  description={entry.data.description}
+>
+  <Section>
+    <Article contain>
+      <Content />
+    </Article>
+  </Section>
+</Layout>

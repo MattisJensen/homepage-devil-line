@@ -21,6 +21,7 @@ export default defineConfig({
         "/events/fjord-opening": "/de/events/fjord-opening",
         "/events/fjord-opening/2020": "/de/events/fjord-opening/2020",
         "/events/fjord-opening/2022": "/de/events/fjord-opening/2022",
+        "/privacy-policy": "/de/privacy-policy",
     },
     integrations: [
         alpinejs(),

@@ -17,6 +17,7 @@ const en: Translations = {
   // -- Footer --
   footer: {
     allRightsReserved: "All rights reserved.",
+    impressum: "Site Notice",
     privacyPolicy: "Privacy Policy",
     languageSwitcherLabel: "Switch language",
   },

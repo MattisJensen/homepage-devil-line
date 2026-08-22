@@ -53,12 +53,15 @@ import Devil from "~/assets/images/footer.avif";
         {siteName}. {txt.footer.allRightsReserved}
       </p>
 
-      <a
-        class="text-sm text-white/40 hover:text-white transition-colors"
-        href="/privacy-policy"
-      >
-        {txt.footer.privacyPolicy}
-      </a>
+      <div class="flex items-center gap-2 text-sm text-white/40">
+        <a class="hover:text-white transition-colors" href={`/${lang}/impressum`}>
+          {txt.footer.impressum}
+        </a>
+        <span aria-hidden="true">|</span>
+        <a class="hover:text-white transition-colors" href={`/${lang}/privacy-policy`}>
+          {txt.footer.privacyPolicy}
+        </a>
+      </div>
 
       <div
         class="lg:hidden w-full max-w-xs mt-6"

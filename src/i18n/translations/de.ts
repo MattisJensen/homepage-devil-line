@@ -15,6 +15,7 @@ const de = {
   // -- Footer --
   footer: {
     allRightsReserved: "Alle Rechte vorbehalten.",
+    impressum: "Impressum",
     privacyPolicy: "Datenschutz",
     languageSwitcherLabel: "Sprache wechseln",
   },
