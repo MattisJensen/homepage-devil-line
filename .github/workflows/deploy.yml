@@ -5,8 +5,15 @@ on:
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [ main ]
+    paths-ignore:
+      - README.md
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
+
+# Cancel an older deployment when a newer commit is pushed.
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
