@@ -2,6 +2,7 @@
     "name": "homepage-devil-line",
     "type": "module",
     "version": "0.0.1",
+    "packageManager": "pnpm@10.34.5",
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
@@ -20,6 +21,7 @@
         "astro-icon": "^1.1.5",
         "glightbox": "^3.3.0",
         "masonry-layout": "^4.2.2",
+        "sharp": "^0.34.5",
         "swiper": "^11.1.15",
         "tailwindcss": "^4.1.4"
     },
