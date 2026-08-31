@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import alpinejs from "@astrojs/alpinejs";
 import playformInline from "@playform/inline";
 import mdx from "@astrojs/mdx";
+import { unified } from "@astrojs/markdown-remark";
 import icon from "astro-icon";
 
 // https://astro.build/config
@@ -23,6 +24,11 @@ export default defineConfig({
         "/events/fjord-opening/2022": "/de/events/fjord-opening/2022",
         "/privacy-policy": "/de/privacy-policy",
     },
+    markdown: {
+        processor: unified({
+            gfm: false,
+        }),
+    },
     integrations: [
         alpinejs(),
         playformInline({
@@ -31,7 +37,9 @@ export default defineConfig({
             },
         }),
         mdx(),
-        icon(),
+        icon({
+            iconDir: "src/assets/icons",
+        }),
     ],
     output: "static",
     devToolbar: {

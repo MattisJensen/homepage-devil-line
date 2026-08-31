@@ -8,7 +8,8 @@ interface Props {
 }
 
 const { lang = defaultLanguage } = Astro.props;
-const txt = t(lang).videos;
+const translations = t(lang);
+const txt = translations.videos;
 
 // Your YouTube Channel ID
 const CHANNEL_ID = "UCDpPQ_XZ_bVrc9BQRR8kLJg"; // Replace channel ID
@@ -116,7 +117,7 @@ videos = [...manualVideos, ...filteredVideos].slice(
                                 </h6>
                                 <p class="text-sm text-gray-500 mt-auto">
                                     {video.published.toLocaleDateString(
-                                        txt.locale,
+                                        translations.locale,
                                         {
                                             year: "numeric",
                                             month: "short",
