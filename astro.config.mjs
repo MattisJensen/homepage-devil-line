@@ -26,7 +26,9 @@ export default defineConfig({
     integrations: [
         alpinejs(),
         playformInline({
-            Beasties: true,
+            Beasties: {
+                pruneSource: false,
+            },
         }),
         mdx(),
         icon(),

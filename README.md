@@ -12,6 +12,8 @@ Astro-based static website for Devil-Line Windsurfing.
 Install dependencies:
 
 ```sh
+node --version
+
 pnpm install
 ```
 
